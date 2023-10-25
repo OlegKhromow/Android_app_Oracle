@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_margin"
+    tools:context=".SettingsActivity">
+
+    <TextView
+        android:id="@+id/nameText"
+        style="@style/TextViewSettings"
+        android:layout_marginTop="100dp"
+        android:text="@string/name_enter" />
+
+    <EditText
+        android:id="@+id/nameEdit"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/enter_text_height"
+        android:layout_alignBaseline="@id/nameText"
+        android:layout_toEndOf="@id/nameText"
+        android:autofillHints=""
+        android:hint="@string/hintName"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/surnameText"
+        style="@style/TextViewSettings"
+        android:text="@string/surname_enter"
+        android:layout_below="@id/nameText"/>
+
+    <EditText
+        android:id="@+id/surnameEdit"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/enter_text_height"
+        android:layout_alignBaseline="@id/surnameText"
+        android:layout_toEndOf="@id/surnameText"
+        android:autofillHints=""
+        android:hint="@string/hint_surname"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/birthDateText"
+        style="@style/TextViewSettings"
+        android:text="@string/birth_date_enter"
+        android:layout_below="@id/surnameText"/>
+
+    <Button
+        android:id="@+id/birthDateEntry"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/enter_text_height"
+        style="@style/Widget.Material3.MaterialTimePicker.Button"
+        android:layout_toEndOf="@id/birthDateText"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:text="@string/defaultBirthDate"
+        android:layout_alignBaseline="@id/birthDateText" />
+
+    <TextView
+        android:id="@+id/sexText"
+        style="@style/TextViewSettings"
+        android:text="@string/sex_enter"
+        android:layout_below="@id/birthDateText"/>
+
+    <RadioGroup
+        android:id="@+id/sexRadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/sexText"
+        android:layout_alignTop="@id/sexText"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/maleRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:checked="false"
+            android:text="@string/male"/>
+
+        <RadioButton
+            android:id="@+id/femaleRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/female"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/save" />
+
+</RelativeLayout>

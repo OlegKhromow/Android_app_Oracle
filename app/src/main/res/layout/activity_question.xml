@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_margin"
+    tools:context=".QuestionActivity">
+
+    <EditText
+        android:id="@+id/editQuestion"
+        android:layout_width="@dimen/question_entry_width"
+        android:layout_height="@dimen/enter_text_height"
+        android:hint="@string/enter_question"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/default_margin"
+        android:lines="3"
+        android:autofillHints="" />
+    <TextView
+        android:id="@+id/answerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editQuestion"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/toMenuButton"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:text="@string/menu"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/askButton"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/toMenuButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="@string/ask" />
+</RelativeLayout>

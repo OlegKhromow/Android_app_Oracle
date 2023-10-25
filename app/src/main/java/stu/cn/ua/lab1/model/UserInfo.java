@@ -1,0 +1,114 @@
+package stu.cn.ua.lab1.model;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class UserInfo implements Parcelable {
+    private String name;
+    private String surname;
+    private Calendar birthDate;
+    private String sex;
+
+    public UserInfo(String name, String surname, Calendar birthDate, String sex) {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.sex = sex;
+    }
+
+    public static UserInfo EmptyUserInfo() {
+        Calendar date = Calendar.getInstance();
+        date.set(2000, 0, 1);
+        return new UserInfo("", "", date, "");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public Calendar getBirthDate() {
+        return birthDate;
+    }
+
+    public String getBirthDateString(){
+        SimpleDateFormat dateOnly = new SimpleDateFormat("dd.MM.yyyy");
+        return dateOnly.format(birthDate.getTime());
+    }
+
+    public void setName(String name) {
+        if (name.trim().isEmpty())
+            throw new IllegalArgumentException();
+        this.name = name.trim();
+    }
+
+    public void setSurname(String surname) {
+        if (surname.trim().isEmpty())
+            throw new IllegalArgumentException();
+        this.surname = surname.trim();
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birthDate=" + getBirthDateString() +
+                ", Sex='" + sex + '\'' +
+                '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeString(this.surname);
+        dest.writeSerializable(this.birthDate);
+        dest.writeString(this.sex);
+    }
+
+    public void readFromParcel(Parcel source) {
+        this.name = source.readString();
+        this.surname = source.readString();
+        this.birthDate = (Calendar) source.readSerializable();
+        this.sex = source.readString();
+    }
+
+    protected UserInfo(Parcel in) {
+        this.name = in.readString();
+        this.surname = in.readString();
+        this.birthDate = (Calendar) in.readSerializable();
+        this.sex = in.readString();
+    }
+
+    public static final Creator<UserInfo> CREATOR = new Creator<UserInfo>() {
+        @Override
+        public UserInfo createFromParcel(Parcel source) {
+            return new UserInfo(source);
+        }
+
+        @Override
+        public UserInfo[] newArray(int size) {
+            return new UserInfo[size];
+        }
+    };
+}
