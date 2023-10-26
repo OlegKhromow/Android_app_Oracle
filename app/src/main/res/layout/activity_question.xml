@@ -8,21 +8,41 @@
     android:padding="@dimen/default_margin"
     tools:context=".QuestionActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/questionRecommendation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:src="@mipmap/oracle" />
+
+    <TextView
+        android:id="@+id/questionRecommendation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/question_recommendation"
+        android:layout_above="@id/editQuestion"
+        android:layout_centerHorizontal="true"/>
     <EditText
         android:id="@+id/editQuestion"
         android:layout_width="@dimen/question_entry_width"
-        android:layout_height="@dimen/enter_text_height"
+        android:layout_height="@dimen/enter_question_height"
         android:hint="@string/enter_question"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/answerTextView"
         android:layout_margin="@dimen/default_margin"
         android:lines="3"
-        android:autofillHints="" />
+        android:autofillHints=""/>
     <TextView
         android:id="@+id/answerTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editQuestion"
-        android:layout_centerHorizontal="true"/>
+        android:layout_height="@dimen/enter_text_height"
+        android:layout_above="@id/askButton"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/default_margin"
+        android:textColor="@color/dark_green"
+        android:textStyle="bold"
+        android:textSize="@dimen/answer_text_size"/>
     <Button
         android:id="@+id/toMenuButton"
         android:layout_width="@dimen/button_width"
@@ -37,9 +57,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/toMenuButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_margin="@dimen/default_margin"
         android:text="@string/ask" />
 </RelativeLayout>

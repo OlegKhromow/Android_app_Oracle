@@ -63,21 +63,26 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void saveSettings() {
+        boolean isOk = true;
         try {
             userInfo.setName(binding.nameEdit.getText().toString());
         } catch (IllegalArgumentException e) {
             binding.nameEdit.setText("");
             binding.nameEdit.setError(getString(R.string.enter_name_error));
+            isOk = false;
         }
         try {
             userInfo.setSurname(binding.surnameEdit.getText().toString());
         } catch (IllegalArgumentException e) {
             binding.surnameEdit.setText("");
             binding.surnameEdit.setError(getString(R.string.enter_surname_error));
+            isOk = false;
         }
-        if(binding.sexRadioGroup.getCheckedRadioButtonId() == -1)
+        if(binding.sexRadioGroup.getCheckedRadioButtonId() == -1) {
             binding.femaleRadioButton.setError(getString(R.string.choose_sex_error));
-        else {
+            isOk = false;
+        }
+        if (isOk){
             Log.d(TAG, "New settings: " + userInfo);
             Intent intent = new Intent();
             intent.putExtra(EXTRA_SETTINGS, userInfo);
