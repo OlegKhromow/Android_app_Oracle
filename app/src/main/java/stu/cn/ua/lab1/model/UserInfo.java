@@ -2,10 +2,12 @@ package stu.cn.ua.lab1.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+/**
+ * @author Oleg Khromov
+ */
 
 public class UserInfo implements Parcelable {
     private String name;
@@ -20,6 +22,9 @@ public class UserInfo implements Parcelable {
         this.sex = sex;
     }
 
+    /**
+     * @return instance of the class with default empty values, not null
+     */
     public static UserInfo EmptyUserInfo() {
         Calendar date = Calendar.getInstance();
         date.set(2000, 0, 1);
@@ -38,17 +43,26 @@ public class UserInfo implements Parcelable {
         return birthDate;
     }
 
+    /**
+     * @return birthday date string in format 'dd.MM.yyyy'
+     */
     public String getBirthDateString(){
         SimpleDateFormat dateOnly = new SimpleDateFormat("dd.MM.yyyy");
         return dateOnly.format(birthDate.getTime());
     }
 
+    /**
+     * Setter for name with a check for emptiness
+     */
     public void setName(String name) {
         if (name.trim().isEmpty())
             throw new IllegalArgumentException();
         this.name = name.trim();
     }
 
+    /**
+     * Setter for surname with a check for emptiness
+     */
     public void setSurname(String surname) {
         if (surname.trim().isEmpty())
             throw new IllegalArgumentException();

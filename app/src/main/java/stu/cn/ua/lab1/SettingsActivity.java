@@ -19,6 +19,10 @@ import java.util.Objects;
 import stu.cn.ua.lab1.databinding.ActivitySettingsBinding;
 import stu.cn.ua.lab1.model.UserInfo;
 
+/**
+ * @author  Oleg Khromov
+ */
+
 public class SettingsActivity extends AppCompatActivity {
 
     public static final String EXTRA_SETTINGS = "SETTINGS";
@@ -36,6 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        //initialization of userInfo
         if (savedInstanceState == null){
             userInfo = getIntent().getParcelableExtra(EXTRA_SETTINGS);
             if (userInfo == null){
@@ -44,13 +49,15 @@ public class SettingsActivity extends AppCompatActivity {
         }else {
             userInfo = savedInstanceState.getParcelable(KEY_USERINFO);
         }
-        initEnterFields();
         Log.d(EXTRA_SETTINGS, userInfo.toString());
+
+        initEnterFields();
 
         binding.birthDateEntry.setOnClickListener(v -> {
             setBirthDateFromDataPicker();
         });
 
+        //hide error when radio button is checked
         binding.sexRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             RadioButton radioButton = findViewById(checkedId);
             userInfo.setSex(radioButton.getText().toString());
@@ -62,6 +69,9 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Validation. If successful, the settings are saved and transferred to the MainActivity
+     */
     private void saveSettings() {
         boolean isOk = true;
         try {
@@ -91,6 +101,9 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initialization of editText and radioGroup components with user information
+     */
     private void initEnterFields() {
         binding.nameEdit.setText(userInfo.getName());
         binding.surnameEdit.setText(userInfo.getSurname());
@@ -109,6 +122,9 @@ public class SettingsActivity extends AppCompatActivity {
         outState.putParcelable(KEY_USERINFO, userInfo);
     }
 
+    /**
+     * Creation of DatePickerDialog to choose a birthday
+     */
     private void setBirthDateFromDataPicker() {
         Calendar date = userInfo.getBirthDate();
         DatePickerDialog pickerDialog = new DatePickerDialog(

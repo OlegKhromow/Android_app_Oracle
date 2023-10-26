@@ -10,6 +10,10 @@ import stu.cn.ua.lab1.databinding.ActivityQuestionBinding;
 import stu.cn.ua.lab1.databinding.ActivitySettingsBinding;
 import stu.cn.ua.lab1.model.UserInfo;
 
+/**
+ * @author Oleg Khromov
+ */
+
 public class QuestionActivity extends AppCompatActivity {
 
     public static final String EXTRA_QUESTION = "QUESTION";
@@ -44,6 +48,9 @@ public class QuestionActivity extends AppCompatActivity {
         outState.putCharSequence(KEY_ANSWER, binding.answerTextView.getText());
     }
 
+    /**
+     * Generates an answer to the user's question depending on the question, settings and current date using a hash code
+     */
     private void generateAnswer() {
         String answer = binding.editQuestion.getText().toString().trim();
         binding.answerTextView.setText("");

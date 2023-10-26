@@ -16,6 +16,12 @@ import java.util.Calendar;
 import stu.cn.ua.lab1.databinding.ActivityMainBinding;
 import stu.cn.ua.lab1.model.UserInfo;
 
+/**
+ * Main activity with menu
+ *
+ * @author  Oleg Khromov
+ */
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final int RQ_SETTINGS = 1;
@@ -54,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Start SettingsActivity for enter/edit information about user
+     */
     private void openSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);
         intent.putExtra(SettingsActivity.EXTRA_SETTINGS, user);
@@ -75,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Show alert dialog with an offer to enter user's data
+     */
     private void showAlertDialog(){
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.alert_dialog_title)
