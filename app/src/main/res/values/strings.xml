@@ -20,7 +20,7 @@
     <string name="alert_dialog_message">Hey buddy, you didn\'t enter information about you.\nDo you want to do it now?</string>
     <string name="alert_dialog_yes">Yes</string>
     <string name="alert_dialog_no">No</string>
-    <string name="enter_question_error">No answer was entered!</string>
+    <string name="enter_question_error">No question was entered!</string>
     <string name="enter_name_error">No name was entered</string>
     <string name="enter_surname_error">No surname was entered</string>
     <string name="choose_sex_error">Sex is not chosen</string>
